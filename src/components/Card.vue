@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="main">
     <b-form-group>
       <template slot="label">
         <b>Choose your flavours:</b><br>
@@ -68,5 +68,9 @@ export default {
 </script>
 
 <style scoped>
-    
+    .main {
+       margin:0;
+   padding:0;
+   height:100%;
+    }
 </style>

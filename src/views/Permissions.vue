@@ -1,5 +1,6 @@
 <template>
     <div class="container">
+        <NavBar/>
         <div class="row">
             <div class="col-4">
                 <v-select  v-model="permissionData.selected" label="name" :options="users" value="Select Value"/>
@@ -71,6 +72,7 @@
 
 <script>
 import { mapState } from 'vuex'
+import NavBar from '../components/NavBar.vue'
 export default {
     name: "Permissions",
     data() {
@@ -83,7 +85,7 @@ export default {
         }
     },
     components: {
-        
+        NavBar,
     },
      mounted () {
     this.$store.dispatch('loadUsers')

@@ -1,5 +1,6 @@
 <template>
   <div class="home">
+    <NavBar/>
     <div class="row">
     <div class="col-4">
       <div class="ml-4">
@@ -10,16 +11,18 @@
     <Card></Card>
     </div>
     <HelloWorld msg="Welcome to Your Vue.js App" />
-    
+    <Footer/>
   </div>
 </template>
 
 
 <script>
 // @ is an alias to /src
-import HelloWorld from "@/components/HelloWorld.vue";
-import Card from "@/components/Card.vue";
+import HelloWorld from "@/components/HelloWorld.vue"
+import Card from "@/components/Card.vue"
 import Form from "@/components/Form.vue"
+import NavBar from "../components/NavBar.vue"
+import Footer from "../components/Footer.vue"
 import { mapState } from 'vuex'
 
 export default {
@@ -48,7 +51,9 @@ export default {
   components: {
     HelloWorld,
     Form,
-    Card
+    Card,
+    NavBar,
+    Footer
   },
    mounted () {
     this.$store.dispatch('loadProducts')
@@ -60,3 +65,11 @@ export default {
   }
 };
 </script>
+<style lang="scss">
+  .home {
+    margin:0;
+   padding:0;
+   height:100%;
+
+  }
+</style>

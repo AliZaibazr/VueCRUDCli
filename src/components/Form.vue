@@ -1,5 +1,5 @@
 <template>
-     <div class="col-4">
+     <div class="maincol-4">
           <form @submit.prevent="submitData">
 
     <v-select v-model="select.selected
@@ -75,5 +75,9 @@ export default {
 } 
 </script>
 <style>
-
+.main {
+   margin:0;
+   padding:0;
+   height:100%;
+}
 </style>

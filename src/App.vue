@@ -1,19 +1,35 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>|
-      <router-link to="/permissions">Permissions</router-link>
-    </div>
     <router-view />
   </div>
 </template>
 <script>
 import Vue from 'vue'
+import Vuex from "vuex";
 import BootstrapVue from 'bootstrap-vue'
-Vue.use(BootstrapVue)
 
+
+
+import router from "./router"
+Vue.use(BootstrapVue)
+Vue.use(Vuex);
+
+const store = new Vuex.Store()
+ router.beforeEach((to,from, next) => {
+   const requiresAuth = to.matched.some(record => record.meta.requiresAuth)
+   const currentUser = store.state.currentUser
+  // console.log(this.currentUser)
+  if(requiresAuth && !currentUser){
+     
+     next('/register')
+   } else if (to.path == '/login' && currentUser){
+     next('/')
+   } else{
+     next()
+   }
+ })
 export default {
+ 
   
 }
 </script>
@@ -25,15 +41,5 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-}
-#nav {
-  padding: 30px;
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-    &.router-link-exact-active {
-      color: #42b983;
-    }
-  }
 }
 </style>
